@@ -1,6 +1,6 @@
 import { Theme } from "@emotion/react";
 import { createTheme } from "@mui/material";
-import { createContext, useMemo, useState } from "react";
+import { createContext, useContext, useMemo, useState } from "react";
 
 type TUseMode = [
     Theme,
@@ -203,6 +203,10 @@ export const themeSettings = (mode: string) => {
 
 // context for color mode
 export const ColoroModeContext = createContext({} as { colorMode: { toggleColorMode: () => void } });
+
+export const useColorModeContext = () => {
+    return useContext(ColoroModeContext);
+};
 
 export const useMode = (): TUseMode => {
     const [mode, setMode] = useState<string>("dark");
