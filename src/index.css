@@ -26,10 +26,15 @@ root,
 
 /*  Handle */
 ::-webkit-scrollbar-thumb{
-  background-color: #888;
+  background-color: #c5c4c4;
+  border-radius: 50px;
 }
 
 /*  Handle on Hover */
 ::-webkit-scrollbar-track:hover{
   background-color: #555;
+}
+
+a{
+  text-decoration: none;
 }

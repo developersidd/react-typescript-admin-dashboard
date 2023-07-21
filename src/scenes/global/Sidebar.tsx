@@ -1,44 +1,80 @@
-import { Typography, Box, IconButton, useTheme } from '@mui/material';
-import React, { useState } from 'react'
-import { Sidebar as ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
-import { Link } from 'react-router-dom';
-import { tokens, useColorModeContext, } from '../../theme';
-import {
-  HomeOutlined, PeopleOutlined, ContactsOutlined, ReceiptOutlined, PersonOutlined, BarChartOutlined,  TimelineOutlined, MenuOutlined, MapOutlined, CalendarTodayOutlined, HelpOutlineOutlined, PieChartOutlineOutlined 
-} from "@mui/icons-material";
+import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
+import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
+import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
+import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
+import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
+import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
+import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
+import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
+import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
+import { Box, IconButton, Typography, useTheme } from "@mui/material";
+import { useState } from "react";
+import { Menu, MenuItem, Sidebar as ProSidebar } from "react-pro-sidebar";
+import { Link } from "react-router-dom";
+import abImg from "../../assets/images/ab.jpg";
+import { tokens } from "../../theme";
+const Item = ({ title, to, icon, selected, setSelected }: { title: string, to: string, selected: string, icon: React.ReactNode, setSelected: (title: string) => void }) => {
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+  return (
+
+    <Link to={to} style={{ color: `${colors.grey[100]}` }}>
+      <MenuItem
+        active={selected === title}
+        style={{
+          color: colors.grey[100],
+        }}
+        onClick={() => setSelected(title)}
+        icon={icon}
+      >
+        <Typography>
+          {title}
+        </Typography>
+      </MenuItem>
+    </Link>
+  );
+};
+
 const Sidebar = () => {
   const theme = useTheme();
-  const {colorMode: {toggleColorMode}} = useColorModeContext() || {};
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
   const [selected, setSelected] = useState<string>("Dashboard");
-    
+
   return (
     <Box
-    sx={{
-      "& .pro-sidebar-inner": {
-        background: `${colors.primary[400]} !important`
-      },
-      "& .pro-icon-wrapper": {
-        background: `transparent !important`
-      },
-      "& .pro-inner-item": {
-        padding:  `5px 35px 5px 20px !important`
-      },  
-      "& .pro-inner-item:hover": {
-        color: "#868dfb !important",
-      },
-      "& .pro-menu-item.active": {
-        color: "#6870fa !important",
-      },
-    }}
+      sx={{
+        "& .ps-sidebar-container": {
+          background: `${colors.primary[400]} `,
+          height: "100vh !important",
+        },
+        "& .ps-sidebar-root": {
+          borderRightWidth: "0 !important",
+        },
+        "& .pro-inner-item": {
+          padding: "5px 35px 5px 20px !important",
+        },
+        "& .ps-menu-button:hover": {
+          color: "#868dfb !important",
+          background: "transparent !important"
+        },
+        "& .ps-menu-button .ps-menu-icon:hover": {
+          //@TODO: Add animation here 
+        },
+        "& .ps-menu-button.ps-active": {
+          color: "#6870fa !important",
+        },
+      }}
     >
-       <ProSidebar collapsed={isCollapsed}>
-        <Menu iconShape="square">
+      <ProSidebar collapsed={isCollapsed}>
+        <Menu>
           {/* LOGO AND MENU ICON */}
           <MenuItem
             onClick={() => setIsCollapsed(!isCollapsed)}
-            icon={isCollapsed ? <MenuOutlined /> : undefined}
+            icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
             style={{
               margin: "10px 0 20px 0",
               color: colors.grey[100],
@@ -55,7 +91,7 @@ const Sidebar = () => {
                   ADMINIS
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
-                  <MenuOutlined />
+                  <MenuOutlinedIcon />
                 </IconButton>
               </Box>
             )}
@@ -68,8 +104,8 @@ const Sidebar = () => {
                   alt="profile-user"
                   width="100px"
                   height="100px"
-                  src={`../../assets/user.png`}
-                  style={{ cursor: "pointer", borderRadius: "50%" }}
+                  src={abImg}
+                  style={{ cursor: "pointer", borderRadius: "50%", objectFit: "fill" }}
                 />
               </Box>
               <Box textAlign="center">
@@ -79,7 +115,7 @@ const Sidebar = () => {
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                  Ed Roh
+                  AB Siddik
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
                   VP Fancy Admin
@@ -88,11 +124,11 @@ const Sidebar = () => {
             </Box>
           )}
 
-<Box paddingLeft={isCollapsed ? undefined : "10%"}>
-            <SubMenu
-              label="Dashboard"
+          <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+            <Item
+              title="Dashboard"
               to="/"
-              icon={<HomeOutlined />}
+              icon={<HomeOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
@@ -104,24 +140,24 @@ const Sidebar = () => {
             >
               Data
             </Typography>
-            <SubMenu
-              label="Manage Team"
-              //to="/team"
-              icon={<PeopleOutlined />}
-              aria-selected={selected}
-              setSelected={setSelected}
-            />
-            <SubMenu
-              label="Contacts Information"
-              to="/contacts"
-              icon={<ContactsOutlined />}
+            <Item
+              title="Manage Team"
+              to="/team"
+              icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
-            <SubMenu
-              label="Invoices Balances"
+            <Item
+              title="Contacts Information"
+              to="/contacts"
+              icon={<ContactsOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Invoices Balances"
               to="/invoices"
-              icon={<ReceiptOutlined />}
+              icon={<ReceiptOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
@@ -133,24 +169,24 @@ const Sidebar = () => {
             >
               Pages
             </Typography>
-            <SubMenu
-              label="Profile Form"
+            <Item
+              title="Profile Form"
               to="/form"
-              icon={<PersonOutlined />}
+              icon={<PersonOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
-            <SubMenu
-              label="Calendar"
+            <Item
+              title="Calendar"
               to="/calendar"
-              icon={<CalendarTodayOutlined />}
+              icon={<CalendarTodayOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
-            <SubMenu
-              label="FAQ Page"
+            <Item
+              title="FAQ Page"
               to="/faq"
-              icon={<HelpOutlineOutlined />}
+              icon={<HelpOutlineOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
@@ -162,40 +198,40 @@ const Sidebar = () => {
             >
               Charts
             </Typography>
-            <SubMenu
-              label="Bar Chart"
+            <Item
+              title="Bar Chart"
               to="/bar"
-              icon={<BarChartOutlined />}
+              icon={<BarChartOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
-            <SubMenu
-              label="Pie Chart"
+            <Item
+              title="Pie Chart"
               to="/pie"
-              icon={<PieChartOutlineOutlined />}
+              icon={<PieChartOutlineOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
-            <SubMenu
-              label="Line Chart"
+            <Item
+              title="Line Chart"
               to="/line"
-              icon={<TimelineOutlined />}
+              icon={<TimelineOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
-            <SubMenu
-              label="Geography Chart"
+            <Item
+              title="Geography Chart"
               to="/geography"
-              icon={<MapOutlined />}
+              icon={<MapOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
           </Box>
 
-          </Menu>
-          </ProSidebar>
+        </Menu>
+      </ProSidebar>
     </Box>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

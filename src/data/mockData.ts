@@ -1,5 +1,14 @@
 import { tokens } from "../theme";
-
+/*
+type TMockDataTeam = {
+  id: number;
+  name: string;
+  email: string;
+  age: number;
+  phone: string;
+  access: string;
+}[];
+*/
 export const mockDataTeam = [
   {
     id: 1,
