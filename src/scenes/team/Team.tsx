@@ -20,8 +20,8 @@ const Team = () => {
     }>[] = [
             { field: "id", headerName: "ID" },
             { field: "name", headerName: "Name", flex: 1, cellClassName: "name-colum--cell" },
-            { field: "email", headerName: "Email", flex: 1 },
             { field: "age", headerName: "Age", type: "number", headerAlign: "center", align: "center" },
+            { field: "email", headerName: "Email", flex: 1 },
             { field: "phone", headerName: "Phone Number", flex: 1 },
             {
                 field: "access", headerName: "Access Label", flex: 1,
