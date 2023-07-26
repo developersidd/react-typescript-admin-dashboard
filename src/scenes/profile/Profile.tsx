@@ -1,7 +1,7 @@
 import { Box, Button, TextField } from '@mui/material';
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useFormik } from 'formik';
-import { useCallback } from 'react';
+import { useMemo } from 'react';
 import * as yup from 'yup';
 import Header from '../../components/Header';
 
@@ -48,12 +48,12 @@ const Profile = () => {
     });
 
     const { errors, values, handleBlur, handleChange, handleSubmit, touched, handleReset } = formik;
-    
-    const showResetBtn = useCallback(() => {
+
+    const showResetBtn = useMemo(() => {
         return Object.values(values).every((val) => val !== "")
     }, [values]);
 
-    return (git
+    return (
         <Box
             m="20px"
         >
@@ -146,9 +146,9 @@ const Profile = () => {
                         sx={{ gridColumn: "span 4" }}
                     />
                 </Box>
-                <Box display="flex" justifyContent={`${showResetBtn() ? "space-between" : "end"}`} mt="20px">
+                <Box display="flex" justifyContent={`${showResetBtn ? "space-between" : "end"}`} mt="20px">
                     {
-                        showResetBtn() &&
+                        showResetBtn &&
                         <Button type="submit" color="secondary" onClick={handleReset} variant="contained">
                             Reset
                         </Button>
