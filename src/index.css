@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,900&family=Source+Sans+3:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300&display=swap');
 
 html,
 body,
@@ -7,7 +7,7 @@ root,
 .content {
   height: 100%;
   width: 100%;
-  font-family: 'Source Sans 3', sans-serif;
+  font-family: 'Merriweather', serif
 }; 
 
 .app{
@@ -21,12 +21,12 @@ root,
 
 /* Track */
 ::-webkit-scrollbar-track{
-  background-color: #e0e0e0;
+  background-color: #9b9b9b;
 }
 
 /*  Handle */
 ::-webkit-scrollbar-thumb{
-  background-color: #c5c4c4;
+  background-color: #dbdbdb;
   border-radius: 50px;
 }
 

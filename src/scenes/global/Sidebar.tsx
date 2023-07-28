@@ -47,11 +47,18 @@ const Sidebar = () => {
   // set user selected page to the local Storage
   const setSelectedPage = (page: string) => {
     setSelected(page);
-    localStorage.setItem("selectedPage", JSON.stringify(page));
+    localStorage.setItem("selectedPage", JSON.stringify(page)); //! Thisi 
   };
 
   useEffect(() => {
-    const page: string = JSON.parse(localStorage.getItem("selectedPage"));
+    const pageString: string | null = localStorage.getItem("selectedPage");
+    let page: string;
+    if (pageString !== null) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      page = JSON.parse(pageString);
+    } else {
+      page = "Dashboard";
+    }
     setSelected(page ? page : "Dashboard");
   }, []);
 
@@ -65,7 +72,7 @@ const Sidebar = () => {
         "& .ps-sidebar-root": {
           borderRightWidth: "0 !important",
         },
-        "& .pro-inner-item": {
+        "& .ps-menu-button": {
           padding: "5px 35px 5px 20px !important",
         },
         "& .ps-menu-button:hover": {
@@ -80,7 +87,7 @@ const Sidebar = () => {
         },
       }}
     >
-      
+
       <ProSidebar collapsed={isCollapsed}>
         <Menu>
           {/* LOGO AND MENU ICON */}
@@ -97,7 +104,7 @@ const Sidebar = () => {
                 display="flex"
                 justifyContent="space-between"
                 alignItems="center"
-                ml="15px"
+                ml="10px"
               >
                 <Typography variant="h3" color={colors.grey[100]}>
                   ADMINIS
@@ -201,7 +208,7 @@ const Sidebar = () => {
               icon={<HelpOutlineOutlinedIcon />}
               selected={selected}
               setSelectedPage={setSelectedPage}
-            /> 
+            />
 
             <Typography
               variant="h6"
