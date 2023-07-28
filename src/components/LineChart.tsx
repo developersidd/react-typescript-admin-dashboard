@@ -42,6 +42,7 @@ const LineChart = ({ isDashboard = false }: { isDashboard: boolean }) => {
             },
           }}
             data={mockLineData}
+            colors={isDashboard ? { datum: "color" } : { scheme: "nivo" }}
             margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
             xScale={{ type: 'point' }}
             yScale={{
@@ -59,16 +60,14 @@ const LineChart = ({ isDashboard = false }: { isDashboard: boolean }) => {
                 tickSize: 5,
                 tickPadding: 5,
                 tickRotation: 0,
-                legend: 'transportation',
-                legendOffset: 36,
+                legend: isDashboard ? undefined : "transportation",                legendOffset: 36,
                 legendPosition: 'middle'
             }}
             axisLeft={{
                 tickSize: 5,
                 tickPadding: 5,
                 tickRotation: 0,
-                legend: 'count',
-                legendOffset: -40,
+                legend: isDashboard ? undefined : "count",                legendOffset: -40,
                 legendPosition: 'middle'
             }}
             enableGridX={false}

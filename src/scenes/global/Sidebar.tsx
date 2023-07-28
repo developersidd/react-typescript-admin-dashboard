@@ -47,7 +47,7 @@ const Sidebar = () => {
   // set user selected page to the local Storage
   const setSelectedPage = (page: string) => {
     setSelected(page);
-    localStorage.setItem("selectedPage", JSON.stringify(page)); //! Thisi 
+    localStorage.setItem("selectedPage", JSON.stringify(page)); 
   };
 
   useEffect(() => {
@@ -65,6 +65,10 @@ const Sidebar = () => {
   return (
     <Box
       sx={{
+        position: "sticky",
+        top: "0",
+        left: "0",
+        zIndex: "999999",
         "& .ps-sidebar-container": {
           background: `${colors.primary[400]} `,
           height: "100vh !important",

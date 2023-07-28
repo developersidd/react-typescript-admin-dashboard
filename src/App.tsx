@@ -21,8 +21,11 @@ function App() {
     <ColoroModeContext.Provider value={{ colorMode }}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <div style={{ display: "flex", position: "relative" }} className='app'>
+        <div style={{ display: "flex"}} className='app'>
+          <div style={{position: "sticky", top: 0, left: 0}}>
+
           <Sidebar />
+          </div>
           <main className="content">
             <Topbar />
             <Routes>
