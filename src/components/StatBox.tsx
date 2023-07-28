@@ -8,7 +8,11 @@ const StatBox = ({ icon, title, subtitle, progress, increase }: StatBoxProps) =>
   const theme = useTheme();
   const colors = tokens(theme.palette.mode)
   return (
-    <Box width="100%" m="0 30px">
+    <Box width="100%" m="0 0px" p="18px"
+    sx={{
+      backgroundColor: colors.primary[400]
+      }}
+    >
       <Box marginBottom="5px" display="flex" justifyContent="space-between">
         <Box>
           {icon}

@@ -22,8 +22,8 @@ export const tokens = (mode: PaletteMode) => ({
             700: "#3d3d3d",
             800: "#292929",
             900: "#141414",
-          },
-          primary: {
+        },
+        primary: {
             100: "#d0d1d5",
             200: "#a1a4ab",
             300: "#727681",
@@ -33,8 +33,8 @@ export const tokens = (mode: PaletteMode) => ({
             700: "#0c101b",
             800: "#080b12",
             900: "#040509",
-          },
-          greenAccent: {
+        },
+        greenAccent: {
             100: "#dbf5ee",
             200: "#b7ebde",
             300: "#94e2cd",
@@ -44,8 +44,8 @@ export const tokens = (mode: PaletteMode) => ({
             700: "#2e7c67",
             800: "#1e5245",
             900: "#0f2922",
-          },
-          redAccent: {
+        },
+        redAccent: {
             100: "#f8dcdb",
             200: "#f1b9b7",
             300: "#e99592",
@@ -55,8 +55,8 @@ export const tokens = (mode: PaletteMode) => ({
             700: "#832f2c",
             800: "#58201e",
             900: "#2c100f",
-          },
-          blueAccent: {
+        },
+        blueAccent: {
             100: "#e1e2fe",
             200: "#c3c6fd",
             300: "#a4a9fc",
@@ -66,7 +66,7 @@ export const tokens = (mode: PaletteMode) => ({
             700: "#3e4396",
             800: "#2a2d64",
             900: "#151632",
-          },
+        },
     } : {
 
         grey: {
@@ -170,33 +170,69 @@ export const themeSettings = (mode: PaletteMode): ThemeOptions => {
                     },
                 }),
         },
-        
+
         typography: {
             fontFamily: ["Merriweather", "serif"].join(","),
             fontSize: 12,
             h1: {
                 fontFamily: ["Merriweather", "serif"].join(","),
                 fontSize: 40,
+                '@media (max-width:1200px)': {
+                    fontSize: '35px',
+                },
+                '@media (max-width:600px)': {
+                    fontSize: '30px',
+                },
             },
             h2: {
                 fontFamily: ["Merriweather", "serif"].join(","),
                 fontSize: 32,
+                '@media (max-width:1200px)': {
+                    fontSize: '27px',
+                },
+                '@media (max-width:600px)': {
+                    fontSize: '22px',
+                },
             },
             h3: {
                 fontFamily: ["Merriweather", "serif"].join(","),
                 fontSize: 24,
+                '@media (max-width:1200px)': {
+                    fontSize: '20px',
+                },
+                '@media (max-width:600px)': {
+                    fontSize: '17px',
+                },
             },
             h4: {
                 fontFamily: ["Merriweather", "serif"].join(","),
                 fontSize: 20,
+                '@media (max-width:1200px)': {
+                    fontSize: '18px',
+                },
+                '@media (max-width:600px)': {
+                    fontSize: '16px',
+                },
             },
             h5: {
                 fontFamily: ["Merriweather", "serif"].join(","),
                 fontSize: 16,
+                '@media (max-width:1200px)': {
+                    fontSize: '14px',
+                },
+                '@media (max-width:600px)': {
+                    fontSize: '12px',
+                },
             },
             h6: {
                 fontFamily: ["Merriweather", "serif"].join(","),
                 fontSize: 14,
+                '@media (max-width:1200px)': {
+                    fontSize: '12px',
+                },
+                '@media (max-width:600px)': {
+                    fontSize: '10px',
+                },
             },
         },
     };
