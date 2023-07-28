@@ -68,7 +68,7 @@ const BarChart = ({ isDashboard = false }: { isDashboard: boolean }) => {
             ]}
             borderColor={{
                 from: "color",
-                modifiers: [["darker", "1.6"]],
+                modifiers: [["darker", 1.6]],
             }}
             axisTop={null}
             axisRight={null}
@@ -121,7 +121,7 @@ const BarChart = ({ isDashboard = false }: { isDashboard: boolean }) => {
             ]}
             role="application"
             barAriaLabel={function (e) {
-                return e.id + ": " + e.formattedValue + " in country: " + e.indexValue;
+                return `${e.id} : e.formattedValue  in country:  ${e.indexValue}`;
             }}
         />
     )
